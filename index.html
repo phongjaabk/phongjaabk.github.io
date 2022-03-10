@@ -1,28 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jaa blog</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-<body>
-  <h1>this is simple blog of jaa</h1>
-  <p id="name"></p>
-  <script>
-    const getUser = async() => {
-      console.log('getUser');
-      const url = 'https://jaa-blog-server.herokuapp.com/user'
-      const res = await axios.get(url);
-      console.log({res});
-      const el = document.getElementById('name');
-      el.innerHTML = res.data.username;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jaa blog</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.js"
+      integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="s.style.css" />
+    <link rel="stylesheet" href="s.modal.css" />
+  </head>
+  <body>
+    <ul class="topnav">
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#news" id="myBtn">Log In</a></li>
+      <li><a href="#contact">Sign Up</a></li>
+      <li class="right"><a href="#about">About</a></li>
+    </ul>
+    <h1>this is simple blog of jaa</h1>
+    <button onclick="openModal()">Log In</button>
+    <p id="name"></p>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Login</h2>
+        </div>
+        <div class="modal-body">
+          <label for="uname"><b>Username</b></label>
+          <input
+            id="ip-username"
+            type="text"
+            placeholder="Enter Username"
+            name="uname"
+            required
+          />
+          <p class="ip-error" id="err-username"></p>
 
-    (async() => {
-      await getUser();
-    })();
-  </script>
-</body>
+          <label for="psw"><b>Password</b></label>
+          <input
+            id="ip-password"
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            required
+          />
+          <p class="ip-error" id="err-password"></p>
+
+          <button id="btn-login" onclick="handleLogin()" type="submit">
+            Login
+          </button>
+        </div>
+        <!-- <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div> -->
+      </div>
+    </div>
+    <script>
+      // (async () => {
+      //   await getUser();
+      // })();
+    </script>
+
+    <script src="j.handle-api.js"></script>
+    <script src="j.modal.js"></script>
+  </body>
 </html>
