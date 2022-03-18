@@ -13,6 +13,10 @@
     ></script>
     <link rel="stylesheet" href="s.style.css" />
     <link rel="stylesheet" href="s.modal.css" />
+    <script src="j.showdown.js"></script>
+    <script src="j.handle-api.js"></script>
+    <script src="j.modal.js"></script>
+    <script src="j.post.js"></script>
   </head>
   <body>
     <ul class="topnav">
@@ -24,6 +28,7 @@
     <h1>this is simple blog of jaa</h1>
     <button onclick="openModal()">Log In</button>
     <p id="name"></p>
+    <div id="post-view"></div>
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
@@ -63,12 +68,12 @@
       </div>
     </div>
     <script>
-      // (async () => {
-      //   await getUser();
-      // })();
+      const postView = document.getElementById("post-view");
+      (async () => {
+        const post = await handleGetPost();
+        console.log('post', {post});
+        postView.innerHTML = await convertMarkdownToHtml(post.message[0].body);
+      })();
     </script>
-
-    <script src="j.handle-api.js"></script>
-    <script src="j.modal.js"></script>
   </body>
 </html>

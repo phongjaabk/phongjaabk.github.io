@@ -1,5 +1,5 @@
-const url = "https://jaa-blog-server.herokuapp.com/";
-// const url = "http://localhost:2000/";
+// const url = "https://jaa-blog-server.herokuapp.com/";
+const url = "http://localhost:2000/";
 
 const insertParam = (url, key, value) => {
   key = encodeURIComponent(key);
